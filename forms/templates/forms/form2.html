@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Laciudad - Digital Marketer's Form</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="{% static 'forms/logo.png' %}" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="{% static 'forms/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'forms/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'forms/vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'forms/vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'forms/vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'forms/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'forms/css/main.css' %}">
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<!--div class="login100-pic js-tilt" data-tilt>
+					<img src="{% static 'forms/logo.png' %}" alt="IMG">
+				</div-->
+				<div class="col-md-6" style="margin-top: -80px;">
+					<div class="container-login100-form-btn" style="width: 150px;">
+						<a href="{% url 'index' %}">
+							<button class="login100-form-btn"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+								Back to home
+							</button>
+						</a>
+					</div>
+					<div class="mgp">
+						<span class="login100-form-title" style="margin-bottom: -50px;">
+							Small and Medium Enterprises
+						</span>
+						<div class="text-left p-t-12">
+							<div class="txt2">
+								<p>
+									In this affiliate partnership program, SME brand products would be used as:
+									<br>•subscription bonuses as a gift for subscribers.
+									<br>•compensation rewards on completion of the stages of our indirect referral structure on Laciudadnet. 
+									<br>Upon subscription, our subscribers are gifted with products from our SME partners.
+									<br>Also, Under the network marketing section of Laciudadnet, there is the matrix otherwise called indirect referral structure where our subscribers who complete the first and second stages are compensated with stage rewards in form of products sold by our SMEs.
+									<br>To read more about the how the matrix works, click here.
+									<br>SMEs are selected in each city so that subscribers can come claim their rewards. SMEs would be given the details of the qualified subscribers and paid in bulk so that they can deliver the products to qualified subscribers.<br>
+									<br>For instance:
+									<br>• the subscription bonus for BASIC plan is food stuffs worth $5 for each qualified subscriber, Laciudad would pay in bulk for qualified subscribers (e.g for 50 subscribers, $250 would be paid ) so that the delivery structure can be well constructed by the SMEs.
+									<br>The official duration for partnership is a year but if brands show impressive conducts, Laciudad might retain them.<br>
+									<br>Requirements:
+									<br>•Such brand/brand owner must subscribe to at least the PLUS PLAN on our website.
+									<br>•Such brand must be an SME owner with the products Laciudad prescribe.<br>
+									<br>Benefits:
+									<br>•High Brand visibility and massive patronage through Laciudadnet.
+									<br>•Access to possible Future opportunities with Laciudad
+									<br>If you've read the above and you understand and agree to the terms and modality, kindly fill this form:
+
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<form class="login100-form validate-form col-md-6" action="" method="post">
+					{% csrf_token %}
+					
+				
+					<div class="wrap-input100 validate-input" data-validate = "Valid fullname is required">
+						<input class="input100" type="text" name="fullname" placeholder="Fullname">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid Brand/Business name is required">
+						<input class="input100" type="text" name="brandname" placeholder="Brand/Business name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-id-badge" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid email is required">
+						<input class="input100" type="email" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid Mobile Number is required">
+						<input class="input100" type="text" name="number" placeholder="Mobile Number">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid Country is required">
+						<input class="input100" type="text" name="country" placeholder="Country">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-fort-awesome" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid State or Province is required">
+						<input class="input100" type="text" name="state" placeholder="State or Province">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid Current City is required">
+						<input class="input100" type="text" name="city" placeholder="Current City">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-connectdevelop" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid category is required">
+						<select class="input100" name="category" placeholder="Category">
+							<option value="">select category</option>
+							<option value="Fashion">Fashion</option>
+							<option value="Laptops, Smartphones, Tablets and Accessories">Laptops, Smartphones, Tablets and Accessories</option>
+							<option value="Food stuffs/fruits/Groceries">Food stuffs/fruits/Groceries</option>
+							<option value="Electronics">Electronics</option>
+							<option value="Home appliances">Home appliances</option>
+							<option value="Hair/beauty products">Hair/beauty products</option>
+							<option value="Automobiles">Automobiles</option>
+							<option value="Real estate">Real estate</option>
+							<option value="Travels">Travels</option>
+						</select>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-cart-plus" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid Current Address is required">
+						<input class="input100" type="text" name="address" placeholder="Current Address">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-home" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "valid Occupation is required">
+						<input class="input100" type="text" name="occupation" placeholder="Occupation">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-laptop" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="whatsapp" placeholder="Whatsapp Number">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-whatsapp" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="facebook" placeholder="Facebook">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-facebook" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="instagram" placeholder="Instagram">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-instagram" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="twitter" placeholder="Twitter">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-twitter" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100">
+						<input class="input100" type="text" name="linkedin" placeholder="LinkedIn">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-linkedin" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Submit <i class="fa fa-paper-plane" aria-hidden="true"></i>
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="{% static 'forms/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'forms/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'forms/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'forms/vendor/select2/select2.min.js' %}"></script>
+	<script src="{% static 'forms/vendor/tilt/tilt.jquery.min.js' %}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1
+		})
+	</script>
+	<script src="{% static 'forms/js/main.js' %}"></script>
+
+</body>
+</html>
