@@ -7,7 +7,7 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <meta name="description" content="Mobile Application HTML5 Template">
+  <meta name="description" content="Laciudad">
 
   <meta name="copyright" content="MACode ID, https://www.macodeid.com/">
 
@@ -25,8 +25,9 @@
 
   <link rel="stylesheet" href="{% static 'forms/assets/css/mobster.css' %}">
 
+  <link rel="stylesheet" href="{% static 'forms/main.css' %}">
 </head>
-<body>
+<body class="body">
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-floating">
   <div class="container">
@@ -69,16 +70,13 @@
     <div class="container h-100">
       <div class="row align-items-center h-100">
         <div class="col-lg-6 wow fadeInUp">
-          <div class="badge mb-2"><span class="icon mr-1"><span class="mai-globe"></span></span>Your #1 Online city</div>
-          <div class="text-slide">
-            <div class="slide"><span id="typed"></span></div>
-          </div>
+          <div class="badge mb-2"><span class="icon mr-1"><span class="mai-globe"></span></span></div><p id="demo" class="badge"></p>
           <h2 class="mb-4">Connect, Trade, Make Wealth.</h2>
           <p class="mb-4">Laciudad Network is used globally by individuals and businesses for; collaboration and networking, creation of generational wealth, and exchange of values for money.</p>
           <a href="#" class="btn btn-primary rounded-pill">Join Now</a>
         </div>
         <div class="col-lg-6 d-none d-lg-block wow zoomIn">
-          <div class="img-place mobile-preview shadow floating-animate">
+          <div class="img-place shadow floating-animate">
             <img src="{% static 'forms/affiliate2.png' %}" alt="">
           </div>
         </div>
@@ -93,8 +91,8 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-5 py-3">
-        <div class="img-place mobile-preview shadow wow zoomIn">
-          <img src="{% static 'forms/logo.png' %}" alt="">
+        <div class="img-place shadow wow zoomIn floating-animate">
+          <img src="{% static 'forms/about-extra-2.svg' %}" alt="">
         </div>
       </div>
       <div class="col-lg-6 py-3 mt-lg-5">
@@ -105,7 +103,7 @@
             </div>
             <div class="iconic-content">
               <h5>Social Networking</h5>
-              <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+              <p class="fs-small">Meet new people, connect with professionals, top brands and elites on Laciudad Network.</p>
             </div>
           </div>
           <div class="iconic-item wow fadeInUp">
@@ -114,7 +112,7 @@
             </div>
             <div class="iconic-content">
               <h5>E-commerce</h5>
-              <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+              <p class="fs-small">Advertise your services and sell your products safely on Laciudad Network.</p>
             </div>
           </div>
           <div class="iconic-item wow fadeInUp">
@@ -123,7 +121,7 @@
             </div>
             <div class="iconic-content">
               <h5>Network Marketing</h5>
-              <p class="fs-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</p>
+              <p class="fs-small">Create generational wealth through passive income on Laciudad Network.</p>
             </div>
           </div>
         </div>
@@ -132,7 +130,7 @@
   </div>
 </div>
 
-<div class="page-section">
+<div class="page-section" style="margin-top: -100px;">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 offset-lg-1 py-3 mt-lg-5 wow fadeInUp">
@@ -141,7 +139,7 @@
 
           <br>The goal is to ease the stress of Corporate Businesses, Entrepreneurs, SMEs and even Top Brands in connecting with their customers and in turn, build visibility via the digital space.
           
-          <br><a href="">Laciudadnet.com</a> features a network of people building social relationships via the Social Networking features, marketing their products, ideas and services on a safer note, (E- commerce) and to build a long lasting wealth structure which would decrease poverty rates via solid and legitimate referral structures. (Network Marketing). The registration process and  networking on Laciudadnet.com is FREE.
+          <br><a href="">Laciudadnet.com</a> features a network of people building<span id="dots">...</span><span id="more"> social relationships via the Social Networking features, marketing their products, ideas and services on a safer note, (E- commerce) and to build a long lasting wealth structure which would decrease poverty rates via solid and legitimate referral structures. (Network Marketing). The registration process and  networking on Laciudadnet.com is FREE.
           
           <br>We are building a digitalized business city where people can operate and capture collaborative activities that will propel career and socioeconomic development by leveraging on the collective global input to create better solutions for humanity.
           
@@ -149,13 +147,14 @@
           
            <br>The subscription plan structure was put in place to enrich our affiliate partners and make them benefit more from other subscribers on the platform. We will also make use of their products or services to compensate our subscribers.The subscription plan lasts for a year.
           
-          <br><a href="">Laciudadnet.com</a> is open to the general public even if they aren't buying or selling anything. They can come aboard the platform to network with new people and  earn on the platform via network marketing too so our platform isn't restricted to only some set of people only.
+          <br><a href="">Laciudadnet.com</a> is open to the general public even if they aren't buying or selling anything. They can come aboard the platform to network with new people and  earn on the platform via network marketing too so our platform isn't restricted to only some set of people only.</span>
           
         </p>
+        <button class="btn btn-gradient rounded-pill mb-2" onclick="myFunction()" id="myBtn">     Read more</button>
       </div>
       <div class="col-lg-5 py-3">
-        <div class="img-place mobile-preview shadow wow zoomIn">
-          <img src="{% static 'forms/about-extra-2.svg' %}" alt="">
+        <div class="img-place shadow wow zoomIn floating-animate">
+          <img src="{% static 'forms/about-img.svg' %}" alt="">
         </div>
       </div>
     </div>
@@ -165,22 +164,23 @@
 </div>
 
 
-<div class="page-section bg-image" style="background-image: url({% static 'forms/assets/img/pattern_2.svg' %});">
+<div class="page-section bg-image" style="background-image: url({% static 'forms/assets/img/pattern_2.svg' %}); margin-top: -100px;">
   <div class="container">
     <div class="row justify-content-center align-items-center">
       <div class="col-lg-5 mb-5 mb-lg-0 wow fadeInUp">
         <h3 class="mb-4">Goals and objectives of Laciudad Network</h3>
         <p class="mb-5">
           •To become the First,Biggest and Safest Ecommerce platform on earth,connecting legitimate businesses 
-          <br>•To promote ideas,talents,businesses,brands,careers,passions,purposes through socialization, networking,trading and online cohabitation.
-          <br>•To bridge the gap between companies and targeted customers. That is(i.e),Creating a close relationship between businesses and customers.
+          <br>•To promote ideas, talents, businesses, brands, careers, passions, purposes through socialization, networking, trading and online cohabitation.
+          <br>•To bridge the gap<span id="dots2">...</span><span id="more2">  between companies and targeted customers. That is(i.e),Creating a close relationship between businesses and customers.
           <br>•To ensure maximum security of transactions on www.laciudadnet.com,thereby giving our users an assurance of safety.
-          <br>• To empower our users financially and build wealth  through our subscriptions and network marketing.
+          <br>• To empower our users financially and build wealth  through our subscriptions and network marketing.</span>
         </p>
+        <button class="btn btn-gradient rounded-pill mb-2" onclick="myFunction2()" id="myBtn2">    Read more</button>
       </div>
       <div class="col-lg-5 py-3">
-        <div class="img-place mobile-preview shadow wow zoomIn">
-          <img src="{% static 'forms/about-extra-2.svg' %}" alt="">
+        <div class="img-place shadow wow zoomIn floating-animate">
+          <img src="{% static 'forms/intro-img.svg' %}" alt="">
         </div>
       </div>
     </div>
@@ -215,8 +215,8 @@
         
       </div>
       <div class="col-lg-5 py-3">
-        <div class="img-place mobile-preview shadow wow zoomIn">
-          <img src="{% static 'forms/about-extra-2.svg' %}" alt="">
+        <div class="img-place shadow wow zoomIn floating-animate">
+          <img src="{% static 'forms/about-extra-1.svg' %}" alt="">
         </div>
       </div>
     </div>
@@ -227,13 +227,13 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-7 py-3 mb-5 mb-lg-0">
-        <div class="img-place w-lg-75 wow zoomIn">
+        <div class="img-place w-lg-75 wow zoomIn floating-animate">
           <img src="{% static 'forms/assets/img/illustration_contact.svg' %}" alt="">
         </div>
       </div>
       <div class="col-lg-5 py-3">
-        <h2 class="wow fadeInUp">Need a help? <br>
-        Don't worry just contact us.</h2>
+        <h3 class="wow fadeInUp">Need help? <br>
+        Don't worry just contact us.</h3>
 
         <form method="POST" class="mt-5">
           {% csrf_token %}
@@ -312,6 +312,19 @@
       </div>
     </div>
   </div>
+ 
+<div>
+  <div class="preloader">
+    <p id="p">l</p>
+    <p id="p">a</p>
+    <p id="p">c</p>
+    <p id="p">i</p>
+    <p id="p">u</p>
+    <p id="p">d</p>
+    <p id="p">a</p>
+    <p id="p">d</p>
+  </div>
+</div>
 
   <hr>
 
@@ -344,9 +357,6 @@
 
 <script src="{% static 'forms/assets/js/mobster.js' %}"></script>
 
-<script src="{% static 'forms/js/main.js' %}"></script>
-
-<script src="{% static 'forms/js/typed.min.js' %}"></script>
-
+<script src="{% static 'forms/index.js' %}"></script>
 </body>
 </html>

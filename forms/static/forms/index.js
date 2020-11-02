@@ -1,54 +1,56 @@
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelector('.mathematics').addEventListener('click', () => load_mathematics());
-  document.querySelector('.english').addEventListener('click', () => load_english());
-  document.querySelector('.quantitative').addEventListener('click', () => load_quantitative());
-  document.querySelector('.verbal').addEventListener('click', () => load_verbal());
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+  
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
 
-  load_mathematics();
-  countdown(0, 59, 59);
+function myFunction2() {
+  var dots = document.getElementById("dots2");
+  var moreText = document.getElementById("more2");
+  var btnText = document.getElementById("myBtn2");
+  
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
+
+// typing animation
+var i = 0;
+var txt = 'Your #1 Online city'; /* The text */
+var speed = 150; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  typeWriter();
 });
 
-function countdown(hr, mm, ss) {
-  var interval = setInterval(function () {
-    if(hr == 0 && mm == 0 && ss == 0)clearInterval(interval);
-    ss--;
-    if(ss == 0){
-      ss = 59;
-      mm--;
-      if(mm == 0){
-        mm = 59;
-        hr --;
-      }
-    }
-    if(hr.toString().length < 2) hr = "0"+hr;
-    if(mm.toString().length < 2) mm = "0"+mm;
-    if(ss.toString().length < 2) ss = "0"+ss;
-    $("#timer").html(hr+" : "+mm+" : "+ss);
-    //document.querySelector("#timer").innerHTML = `hr+" : "+mm+" : "+ss`
+window.onload = function () {
+  var body = document.getElementsByClassName('body')[0];
+  var preloader = document.getElementsByClassName('preloader')[0];
+  setTimeout(function () {
+    preloader.style.display = 'none';
   }, 1000);
-}
-
-function load_mathematics() {
-  document.querySelector('.mathematics2').style.display='block';
-  document.querySelector('.verbal2').style.display='none';
-  document.querySelector('.quantitative2').style.display='none';
-  document.querySelector('.english2').style.display='none';
-}
-function load_english() {
-  document.querySelector('.mathematics2').style.display='none';
-  document.querySelector('.verbal2').style.display='none';
-  document.querySelector('.quantitative2').style.display='none';
-  document.querySelector('.english2').style.display='block';
-}
-function load_quantitative() {
-  document.querySelector('.mathematics2').style.display='none';
-  document.querySelector('.verbal2').style.display='none';
-  document.querySelector('.quantitative2').style.display='block';
-  document.querySelector('.english2').style.display='none';
-}
-function load_verbal() {
-  document.querySelector('.mathematics2').style.display='none';
-  document.querySelector('.verbal2').style.display='block';
-  document.querySelector('.quantitative2').style.display='none';
-  document.querySelector('.english2').style.display='none';
-}
+};

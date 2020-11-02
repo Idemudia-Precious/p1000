@@ -19,13 +19,20 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<!--div class="login100-pic js-tilt" data-tilt>
-					<img src="{% static 'forms/logo.png' %}" alt="IMG">
-				</div-->
-				<div class="col-md-6" style="margin-top: -80px;">
+
+				{% if message == "true" %}
+				<div style="margin-top: -90px; margin-bottom: 90px;" class="alert alert-success alert-dismissible fade show" role="alert">
+					Congratulations! Your form has been submitted. Kindly await further info from us.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				{% endif %}
+
+				<div class="col-md-6" style="margin-top: 50px;">
 					<div class="container-login100-form-btn" style="width: 150px;">
 						<a href="{% url 'index' %}">
-							<button class="login100-form-btn"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+							<button class="login100-form-btn" style="margin-top:-150px;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
 								Back to home
 							</button>
 						</a>
