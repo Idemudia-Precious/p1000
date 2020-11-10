@@ -1,7 +1,6 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import *
-from django.core.mail import EmailMessage
 from django.conf import settings
 
 # Create your views here.
