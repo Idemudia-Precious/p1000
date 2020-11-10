@@ -1,0 +1,758 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0109)https://www.delmarlearning.com/DLMT/web/launch.aspx?refId=79074&activity.id=899842756&timestamp=1604652327884 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Launch Activity</title>
+    <script type="text/javascript" src="./ruxitagentjs_ICA27SVfqrux_10203201027145855.js.download" data-dtconfig="rid=RID_1548832190|rpid=-1388034227|domain=delmarlearning.com|reportUrl=/DLMT/Web/rb_bf72382oux|app=ea7c4b59f27d43eb|cuc=w8dugclo|featureHash=ICA27SVfqrux|lastModification=1604312120322|vcv=2|dtVersion=10203201027145855|tp=500,50,0,1|rdnt=1|uxrgce=1|uxdcw=1500|vs=2|agentUri=/DLMT/Web/ruxitagentjs_ICA27SVfqrux_10203201027145855.js"></script><link href="./launch.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./jquery-1.4.2.min.js.download"></script>
+    <script type="text/javascript" src="./jquery-url.js.download"></script>
+    <script type="text/javascript" src="./dlmtObjects.js.download"></script>
+    <script type="text/javascript" src="./log.js.download"></script>
+    <script type="text/javascript" src="./dlmt-core.js.download"></script>
+    <script type="text/javascript" src="./cookie-detect.js.download"></script>
+    <script>
+        var dlJQ = jQuery.noConflict(true);
+    </script> 
+    <script type="text/javascript" src="./steal.js.download"></script>
+</head>
+<body>
+    <div id="frame-view-div" class="frame-view-div-show">
+        <iframe id="frame-view-frame" scrolling="no" src="./SSOAutoRegisterMindTap.html"></iframe>
+    </div>
+    <form method="post" action="https://www.delmarlearning.com/DLMT/web/launch.aspx?refId=79074&amp;activity.id=899842756&amp;timestamp=1604652327884" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTYwMTQyMTI4NWRkzD5ykhmE51ctykJjYK7DiLyJOV8=">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E43EB119">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAR8gjtunKtfMGbvVFgprNqIbKwkEY+k3Qus4piZYPGLFCynK0bYkLWiz2owSWltKXwut+UttpMXj4g78/vLUujlv04uoN9737LLS3LhaDOYSabT3Qw=">
+</div>
+        <div id="loadingIndicator" hidden="true" style="display: none;"></div>
+        <input name="cGuid" type="hidden" id="cGuid">
+        <input name="token" type="hidden" id="token">
+        <input name="uid" type="hidden" id="uid" value="tenelson2@crimson.ua.edu">
+        <div id="divLaunch" style="display: none;">
+        <h2>Your Lab, <em>T3 Coding Challenge 4: Debug</em>, is ready.</h2><h2>Please note:</h2><ul id="lstSplash"><li><div>This will be your <strong><strong>1st</strong></strong> try for this lab.</div></li><li><div>Click on the <strong>Start Assignment Now</strong> button below to begin.</div></li></ul><div id="divBttn"><input id="mtAttempt" class="bttnButton" type="button" title="Attempt" value="Start Assignment Now"></div></div>
+        <div id="divRevBttn" style="display: none;"></div>
+        <div id="divReview" style="display: none;">
+            <h2 id="h2Activity"></h2>
+            <table id="tbReview">
+                <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Score</th>
+                            <th>Possible Score</th>
+                            <th>Completed Date</th>
+                        </tr>
+                </thead>
+                <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <div id="divDetailedRevNotAvailable" style="display: none;">* Detailed review is not available for this activity.</div>
+                                <div id="divDetailedRevAvailable" style="display: block;"><input id="mtAttemptDetailReview" class="bttnReviewMode" type="button" title="Attempt" value="Detailed Review"></div>
+                            </td>
+                        </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td id="tdUser"></td>
+                        <td id="tdScore"></td>
+                        <td id="tdMax"></td>
+                        <td id="tdDate"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="divRelaunch" style="display: none;"></div>
+        </div>
+        <div id="divMsg" style="display: none;"></div>
+        <div id="Error" style="display: none;">
+                <h2></h2>
+                <div id="errMsg"></div>
+        </div>
+    </form>
+
+
+<script>
+    dlJQ("#loadingIndicator")
+        .bind('ajaxStart', function () {
+            dlJQ(this).show();
+        })
+        .bind('ajaxStop', function () {
+            dlJQ(this).hide();
+        });
+    var svcConfig = '//www.delmarlearning.com/DLMT/Services/';
+    var actRootURL = '//www.delmarlearning.com/sso/SSOAutoRegisterMindTap.ashx?eISBN=';
+    var catId;
+    var $dLaunch = dlJQ('#divLaunch').hide();
+    var $dMsg = dlJQ('#divMsg').hide();
+    var $dReview = dlJQ('#divReview').hide();
+    var $dError = dlJQ('#Error').hide();
+    var $dRevBttn = dlJQ('#divRevBttn').hide();
+    var $dReLaunch = dlJQ('#divRelaunch').hide();
+    var $dRevAvailButton = dlJQ('#divDetailedRevAvailable').hide();
+    var $dRevNotAvailText = dlJQ('#divDetailedRevNotAvailable').hide();
+    var adminActivityLaunch = false;
+    var storeCompare = "";
+    var testLaunchedWindowExists = null;
+    var childWindow = null;
+    var logReviewSuccessful = true;
+    var environmentOrigin = 'https://www.delmarlearning.com';
+    var childPostMessageHandle = null;
+
+    var activityPlacement = dlJQ.getQueryString('activityPlacement');
+
+    var contentId = dlJQ.getQueryString('refId');
+    dlAttempt.ContentId = contentId;
+    
+    var attemptIndex = dlJQ.getQueryString('attemptIndex');
+    dlAttempt.AttemptNum = attemptIndex;
+    
+    var activityId = dlJQ.getQueryString('activity.id');
+    dlAttempt.ActivityId = activityId;
+    
+    var status = dlJQ.getQueryString('aa.status');
+    
+    var takeId = dlJQ.getQueryString('aa.takeId');
+    dlAttempt.TakeId = takeId;
+    
+    var cluiRef;
+    steal.map({
+        "clui": "/static/clui"
+    });
+
+    steal('clui/app', 'clui/attempt', 'clui/sso')
+        .then(function () {
+            Clui.app().init(function (appContext) {
+                dlAttempt.activityName = Clui.appContext.activityName;
+                dlAttempt.SnapshotId = Clui.appContext.nextBook.snapshotId;
+                Clui.SSO.ready(function (sso) {
+                    dlSso.role = Clui.appContext.userProfile.role;
+                    dlSso.CluiGuid = Clui.appContext.userProfile.user.imsSourceId;
+                    dlSso.Sign = Clui.appContext.sign;
+                    dlSso.Snapshot = Clui.appContext.nextBook.snapshotId;
+                    dlSso.Time = Clui.appContext.timestamp;
+                    var token = sso.getSSOToken();
+
+                    Clui.hub.sub('closeActivity', function () {
+                        //Any code to be included when window loses focus should be included here.
+                        var testLaunchedWindowExists = null;
+                        location.reload(true);
+                    });
+                    
+                    dlJQ.ajax({
+                        type: 'POST',
+                        url: 'launch.aspx/CkAuth',
+                        data: '{"ssoToken":"' + token + '","cluiGuid":"' + dlSso.CluiGuid + '","sign":"' + dlSso.Sign + '","role":"' + dlSso.role + '","snapshot":"' + dlSso.Snapshot + '","timestamp":"' + dlSso.Time + '"}',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.d == 'SEC_FAILURE') {
+                                $dLaunch.hide();
+                                $dReview.hide();
+                                $dError.show();
+                                dlJQ('#Error h2').text('Security Check Failed');
+                                dlJQ('#errMsg').text('We were unable to validate the security of this request.  Please close this window and try again.');
+                            }
+                            else if (data.d == 'AUTH_ERROR') {
+                                $dLaunch.hide();
+                                $dReview.hide();
+                                $dError.show();
+                                dlJQ('#Error h2').text('Authentication Error');
+                                dlJQ('#errMsg').text('We were unable to validate your identity. Please log out of MindTap and log back in to try again.');
+                            }
+                            else {
+                                $dError.hide();
+                                document.getElementById('uid').value = data.d;
+                                dlSso.uid = data.d;
+                                if (activityPlacement === 'INLINE') {
+                                    getActivityInfo(dlAttempt.ContentId, launchActivity);
+                                } else {
+                                    renderPage();
+                                }
+                            }
+                        },
+                        error: function (xhr, err, e) {
+                            $dLaunch.hide();
+                            $dReview.hide();
+                            $dError.show();
+                            dlJQ('#Error h2').text('Authentication Error');
+                            dlJQ('#errMsg').text('We were unable to validate your identity. Please close this activity and try again.');
+                        }
+                    });
+
+                    //refresh
+                    dlJQ.ajax({
+                        type: 'POST',
+                        url: svcConfig + 'Services/getRefresh',
+                        data: '{"SsoGuid":"' + dlSso.CluiGuid + '","Snapshot":"' + dlSso.Snapshot + '"}',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function (data) {
+                            //were scores posted?
+                            if (data == true) {
+                                //show message
+                                dlJQ('#divMsg').text('*Note: You have one or more activity scores which have not been synched to MindTap. We have resubmitted these scores to MindTap.');
+                                $dMsg.show();
+
+                            } else {
+                                //don't show message
+                                $dMsg.hide();
+                            }
+                        },
+                        error: function (xhr, err, e) {
+
+                        }
+                    });
+                });
+            });
+        });
+
+        function renderPage() {
+            //Pull activity info.  Certain activities have the ability to launch into a review mode.
+            getActivityInfo(dlAttempt.ContentId);
+            if (dlSso.role == 'INSTRUCTOR') {
+                //Clear review log.
+                clearInstructorReview(dlSso.CluiGuid);
+            }
+            //If a review mode is available render the review page with a launch button.
+            if (dlAttempt.ReviewModeAvailable) {
+                $dRevAvailButton.show();
+                $dRevNotAvailText.hide();
+            }
+            else {
+                $dRevAvailButton.hide();
+                $dRevNotAvailText.show();
+            }
+            if (status == 2) {
+                //status = 2, review mode
+                log('Review Attempt');
+                $dLaunch.hide();
+                if (dlSso.role == 'INSTRUCTOR') {
+                    logInstructorReview(takeId, dlSso.CluiGuid);
+                    if (!logReviewSuccessful) {
+                        //If we didn't successfully log the instructor looking at the student's take, hide the option for detailed review.
+                        $dRevAvailButton.hide();
+                        $dRevNotAvailText.show();
+                    }
+                }
+                populateReview(takeId, contentId);
+            }
+            else {
+                $dReview.hide();
+                if (dlAttempt.ParentISBN) {
+                    getSplashContent(dlAttempt.ParentISBN);
+                }
+                $dLaunch.show();
+            }
+        }
+
+    function clearInstructorReview(instructorId) {
+        dlJQ.ajax({
+            type: "POST",
+            url: svcConfig + 'Services/ClearInstructorReview',
+            async: false,
+            data: '{"InstructorId":"' + instructorId + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {},
+            error: function (xhr, textStatus, errorThrown) {}
+        });
+    }
+
+    function logInstructorReview(takeId, instructorId){
+        dlJQ.ajax({
+            type: "POST",
+            url: svcConfig + 'Services/LogInstructorReview',
+            async: false,
+            data: '{"AttemptId":"' + takeId + '","InstructorId":"' + instructorId + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                //Track our success logging the instructor looking at a student's take.
+                logReviewSuccessful = data.LogSuccess;
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                logReviewSuccessful = false;
+            }
+        });
+    }
+
+    function populateReview(takeId, contentId) {
+        logError(takeId, 'Callback from MT submitAttempt fired - populating review page.  AttemptID = ' + takeId);
+        $dRevBttn.hide();
+        $dLaunch.hide();
+        dlJQ.ajax({
+            type: "POST",
+            url: svcConfig + 'Services/getReview',
+            async: false,
+            data: '{"contentId":' + contentId + ', "snapshotId":' + dlAttempt.SnapshotId + ', "attemptId":"' + takeId + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                dlJQ('#h2Activity').html(dlAttempt.activityName);
+                dlJQ('#tdUser').html(data.sn + ', ' + data.givenName);
+                dlJQ('#tdDate').html(data.submitted);
+
+                if (data.submittedNotGraded) {
+                    dlJQ('#tdScore').html('Pending');
+                }
+                else {
+                    var percent = (100 * data.score / data.maxScore).toFixed(2);
+                    dlJQ('#tdScore').html(data.score + '(' + percent + '%)');
+                }
+                dlJQ('#tdMax').html(data.maxScore + ' Points');
+                if (data.submittedNotGraded && dlAttempt.ReviewModeAvailable) {
+                    if (dlSso.role == 'INSTRUCTOR' || dlSso.role == 'TEACHING_ASSISTANT') {
+                        dlJQ('#mtAttemptDetailReview').val('Grade');
+                        $dRevAvailButton.show();
+                        $dRevNotAvailText.hide();
+                    }
+                    else {
+                        $dRevNotAvailText.html('* Your assignment is currently pending review and grading by your instructor.  It will be available to view after it has been graded.');
+                        $dRevAvailButton.hide();
+                        $dRevNotAvailText.show();
+                    }
+                }
+
+                $dReview.show();
+                //Show a relaunch button to re-take the current attempt.  SSO Provider doesn't currently include information for MT TA role so use what we have here (data.isInst for instructor only).
+                if ((dlSso.role == 'INSTRUCTOR' && data.isInst) || dlSso.role == 'TEACHING_ASSISTANT') {
+                    dlJQ('#divRelaunch').html('<div>Want to take this assignment again?</div><input id="mtRelaunch" class="bttnButton" type="button" title="Relaunch" value="Retake Assignment"/>');
+                    $dReLaunch.show();
+                }
+                else {
+                    $dReLaunch.hide();
+                }
+            }
+        });
+    }
+
+    function getActivityInfo(cId, callback) {
+        dlJQ.ajax({
+            type: "POST",
+            url: svcConfig + 'Services/getActivity',
+            async: false,
+            data: '{"ContentId":' + cId + ', "SnapshotId":' + dlAttempt.SnapshotId + ', "mtISBN": "' + Clui.appContext.nbISBN + '", "RefreshMindAppName": "' + Clui.appContext.appName + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                dlAttempt.ContentId = data.ContentId;
+                dlAttempt.ParentISBN = data.ParentISBN;
+                dlAttempt.DLMSCatId = data.DLMSCatId;
+                dlAttempt.SnapshotId = data.SnapshotId;
+                dlAttempt.RunsInFrame = data.RunsInFrame;
+                dlAttempt.ReviewModeAvailable = (data.ReviewModeAvailable == 1) || (data.ReviewModeAvailable == 2 && dlSso.role == 'INSTRUCTOR');
+                dlAttempt.ActivityType = data.ActivityType;
+                dlAttempt.Gradeable = data.Gradeable;
+                dlAttempt.InstructorOverideContent = data.InstructorOverideContent;
+                dlAttempt.StudentOverideContent = data.StudentOverideContent;
+                dlAttempt.DisableInstructorLaunch = data.DisableInstructorLaunch;
+                dlAttempt.DisableStudentLaunch = data.DisableStudentLaunch;
+                dlAttempt.UseInsecureLaunch = data.UseInsecureLaunch;
+
+                environmentOrigin = (dlAttempt.UseInsecureLaunch) ? 'http://www.delmarlearning.com' : 'https://www.delmarlearning.com';
+
+                if (callback && typeof (callback) === 'function') {
+                    callback();
+                }
+            }
+        });
+        return true;
+    }
+
+    function getAttemptNumber() {
+        var numAttempts;
+        dlJQ.ajax({
+            type: "POST",
+            url: svcConfig + 'Services/UserAttemptCount',
+            async: false,
+            data: '{"contentId":' + dlAttempt.ContentId + ', "snapshotId":' + dlAttempt.SnapshotId + ', "userId":"' + dlSso.CluiGuid + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                numAttempts = data;
+            }
+        });
+        return numAttempts;
+    }
+
+    function getSplashContent(pISBN) {
+        //Need this debugger statement here because firefox is taking a vacation from respecting breakpoints...
+        var attemptnumber;
+        if (dlAttempt.AttemptNum == null || dlAttempt.AttemptNum == "") {
+            dlAttempt.AttemptNum = getAttemptNumber();
+            attemptnumber = dlAttempt.AttemptNum + 1;
+        }
+        else {
+            attemptnumber = dlAttempt.AttemptNum;
+        }
+
+        //Instructors and teaching assistants are treated as instructor in regards to which content to display.
+        var isIntructor = ((dlSso.role == 'INSTRUCTOR') || dlSso.role == 'TEACHING_ASSISTANT');
+        var disableLaunch = ((isIntructor && dlAttempt.DisableInstructorLaunch) || (!isIntructor && dlAttempt.DisableStudentLaunch));
+        var overrideContent = isIntructor ? dlAttempt.InstructorOverideContent : dlAttempt.StudentOverideContent;
+        var splashLaunchUrl = pISBN + '.js';
+        var launchButtonText = (dlAttempt.ActivityType == 2) ? "Start Assignment Now" : "Launch";
+        var buttonContent = (disableLaunch) ? '' : '<div id="divBttn"><input id="mtAttempt" class="bttnButton" type="button" title="Attempt" value="' + launchButtonText + '"/></div>';
+        
+        //If the activity has data driven overriding content we can update it here.
+        if (overrideContent && overrideContent != "") {
+            dlJQ('#divLaunch').append(overrideContent);
+            dlJQ('#divLaunch').append(buttonContent);
+        }
+        else {
+            dlJQ.ajax({
+                type: "GET",
+                url: 'LaunchContent/' + splashLaunchUrl,
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    //log(data);
+                    if (data.Header.indexOf("<Activity_Title>") >= 0) {
+                        data.Header = data.Header.replace("<Activity_Title>", "<em>" + dlAttempt.activityName + "</em>");
+                    }
+                    dlJQ('#divLaunch').append('<h2>' + data.Header + '</h2>');
+                    dlJQ('#divLaunch').append('<h2>' + data.ListHeader + '</h2>');
+                    dlJQ('#divLaunch').append('<ul id="lstSplash">');
+                    dlJQ.each(data.List, function (i, item) {
+                        if (item.indexOf("<nth>") >= 0) {
+                            item = item.replace("<nth>", "<strong>" + ordinal(attemptnumber) + "</strong>");
+                        }
+                        dlJQ('#lstSplash').append('<li><div>' + item + '</div></li>');
+                    });
+                    if(data.hasOwnProperty('Footer')){
+                        dlJQ('#divLaunch').append('<h2>' + data.Footer + '</h2>');
+                    }                    
+                    dlJQ('#divLaunch').append(buttonContent);
+                    if (!Dlmt.Cookie.TestCookiesActive('CookiesAreAllowed')) {
+                        //Cookies aren't working then launch in a new window and add a message for the user.
+                        dlAttempt.RunsInFrame = 0;
+                        dlJQ('#divLaunch').append('<p><span style="color: red;">*We have detected that cookies are unavailable while opening this frame.  The activity has been set to launch in a new window but this may not address the problem.  If you have issues launching the activity please confirm that cookies are enabled in your browser.</span></p>');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    //Display some default content informing the user that the launch content has not yet been set up for this ISBN.
+                    dlJQ('#divLaunch').append('<h2>Launch content for <em>' + dlAttempt.activityName + '</em> has not been configured</h2>');
+                    dlJQ('#divLaunch').append('<h2>Please note:</h2>');
+                    dlJQ('#divLaunch').append('<ul id="lstSplash">');
+                    dlJQ('#divLaunch ul').append('<li><div>The launch content for this activity has not yet been configured.</div></li>');
+                    dlJQ('#divLaunch ul').append('<li><div>You may still launch the assignment, but note the content may have special usage requirements that are not currently available to be listed here.</div></li>');
+                    dlJQ('#divLaunch').append(buttonContent);
+                }
+            });
+        }
+    }
+
+    dlJQ('#mtAttempt').live('click', function (e) {
+        //Switch the current status appropriately.
+        status = null;
+        mtAttemptCall();
+    });
+
+    //The detail review button behaves exactly like the attempt button and the launchSuccess function will retrieve if we are in review mode along with the attempt id.
+    dlJQ('#mtAttemptDetailReview').live('click', function (e) {
+        //Switch the current status appropriately.
+        status = 2;
+        mtAttemptCall();
+    });
+
+    function mtAttemptCall() {
+        log('Status Check: ' + status);
+        if (status == 1) {
+            //in progress
+            log('Resume Attempt');
+            launchActivity();
+        }
+        else {
+            launchActivity();
+        }
+    }
+
+//dev debug function
+//    function newAttempt_dev() {
+//        log('Content Id: ' + dlAttempt.ContentId);
+
+//        var devUrl = 'http://s-www.delmarlearning.com/DLMT/web/devAutoLogin.aspx?eISBN=' + dlAttempt.ParentISBN + '&dlmsCat=' + dlAttempt.DLMSCatId;
+//        var fUrl;
+//        Clui.SSO.ready(function (sso) {
+//            fUrl = sso.decorateSSOToken(devUrl);
+//        });
+//        log('Attempt Launcher URL: ' + fUrl);
+//        window.open(fUrl, '_blank', 'location=no,menubar=no,titlebar=no,toolbar=no');
+    //    }
+
+    function showModalFrame(decUrl) {
+        dlJQ('#frame-view-div').removeClass('frame-view-div-hide');
+        dlJQ('#frame-view-div').addClass('frame-view-div-show');
+        //Hide the launch page div to prevent double scrollbar on small monitors.
+        dlJQ('#divLaunch').hide();
+        dlJQ('#frame-view-frame').attr('src', decUrl);
+
+        //Set handle to frame for post message.
+        childPostMessageHandle = document.getElementById('frame-view-frame').contentWindow;
+    }
+    
+    function hideModalFrame() {
+        dlJQ('#frame-view-div').removeClass('frame-view-div-show');
+        dlJQ('#frame-view-div').addClass('frame-view-div-hide');
+        //Only re-show the launch page if review screen is not visible.
+        if (!dlJQ('#divReview').is(":visible")){
+            dlJQ('#divLaunch').show();
+        }
+        dlJQ('#frame-view-frame').attr('src', '');
+    }
+    
+    function launchActivity() {
+        var launchUrl = actRootURL + dlAttempt.ParentISBN + '&dlmsCat=' + dlAttempt.DLMSCatId;
+        if (dlAttempt.UseInsecureLaunch) {
+            //Explicitely pre-pend with 'http' for activities with insecure content.
+            launchUrl = 'http:' + launchUrl;
+        }
+        var decUrl;
+        Clui.SSO.ready(function (sso) {
+            decUrl = sso.decorateSSOToken(launchUrl);
+        });
+
+        var availableFrameHeight = window.innerHeight ? window.innerHeight : 0;
+        var availableFrameWidth = window.innerWidth ? window.innerWidth : 0;
+        //Screen size offers too little available space in frame for activities.  We'll go to a new window.  Portrait mode gives the full 768 in width
+        var screenTooSmallForFrame = (window.innerHeight < 641) || (window.innerWidth < 770);
+
+        logError(dlAttempt.attemptId,
+            'launchUrl = ' + launchUrl + ' decUrl = ' + decUrl + ' ZZZ!',
+            'launch.launchActivity()');
+
+        //RunsInFrame = 0 --> Open in a new window.
+        //RunsInFrame = 1 --> Open in a new frame
+        //RunsInFrame = 2 --> Open in a new frame, but if the frame is too small then open in a new window.
+        if ((dlAttempt.RunsInFrame == 2 && !screenTooSmallForFrame) || dlAttempt.RunsInFrame == 1) {
+            showModalFrame(decUrl);
+        }
+        else {
+            //If a window reference already exists then close it and we'll open it up the new window.
+            if (childWindow && childWindow.close) {
+                childWindow.close();
+                childWindow = null;
+            }
+            childWindow = window.open(decUrl, '_blank', 'scrollbars=yes,location=no,menubar=no,titlebar=no,toolbar=no, height=900, width= 1300');
+
+            //Store the handle specifically for post message communications.
+            childPostMessageHandle = childWindow;
+
+            //Close the child window if we try to refresh or the like.
+            window.onbeforeunload = function () {
+                childWindow.close();
+                childWindow = null;
+            }  
+        }
+    }
+
+    //Post Message calls to child window.
+    //Post LaunchConfirmed
+    function postLaunchConfirmed(attemptId, reviewMode) {
+        var myData = {
+            application: 'DLMT',
+            windowType: 'DLMT.Scorm',
+            messageType: 'LaunchConfirmed',
+            attemptId: attemptId,
+            reviewMode: reviewMode
+        };
+        childPostMessageHandle.postMessage(myData, environmentOrigin);
+    }
+    //Post KeepAlive
+    function postRefreshKeepAlive() {
+        var myData = {
+            application: 'DLMT',
+            windowType: 'DLMT.Scorm',
+            messageType: 'RefreshKeepAlive',
+            keepAlive: true
+        };
+        childPostMessageHandle.postMessage(myData, environmentOrigin);
+    }
+
+    //Add PostMessage Event Listeners
+    window.addEventListener('message', function (e) {
+        //Limit handling to DLMT spawned events.
+        if (e.data && e.data.application == 'DLMT' && e.origin && e.origin == environmentOrigin) {
+            //Report score
+            if (e.data.messageType == 'ReportScore') {
+                //Call report score as if it came from the child window.  Note the second paramter is an exception instead of attempt ID for errors.
+                if (e.data.status && e.data.status == 'Success') {
+                    reportScore(e.data.status, e.data.attemptId);
+                }
+                else {
+                    reportScore(e.data.status, e.data.errorData);
+                }
+            }
+            if (e.data.messageType == 'LaunchSuccess') {
+                launchSuccess(function (attempt, reviewMode) {
+                    postLaunchConfirmed(attempt, reviewMode);
+                });
+            }
+            if (e.data.messageType == 'RequestKeepAlive') {
+                postRefreshKeepAlive();
+            }
+        }
+    }, false);
+    
+    function getRelaunchUrl() {
+        var launchUrl = actRootURL + dlAttempt.ParentISBN + '&dlmsCat=' + dlAttempt.DLMSCatId;
+        if (dlAttempt.UseInsecureLaunch) {
+            //Explicitely pre-pend with 'http' for activities with insecure content.
+            launchUrl = 'http:' + launchUrl;
+        }
+        var decUrl;
+        Clui.SSO.ready(function (sso) {
+            decUrl = sso.decorateSSOToken(launchUrl);
+        });
+        return decUrl;
+    }
+
+    function launchSuccess(callback) {
+        //called by Lab window
+        log('Successful Launch of Lab Activity');
+        //If we're in review mode and this is an activity that has a review mode.
+        var launchingInReviewMode = (status == 2 && dlAttempt.ReviewModeAvailable);
+        var isMasterSnapshot = Clui.appContext.isMaster;
+        var cengageBrainCourseName = Clui.appContext.courseName;
+        var snapshotId = dlSso.Snapshot;
+        var gradeable = dlAttempt.Gradeable;
+        var activityType = dlAttempt.ActivityType;
+        var courseKey = Clui.appContext.courseKey ? Clui.appContext.courseKey : "";
+        var mtSsoIsbn = Clui.appContext.nbISBN ? Clui.appContext.nbISBN : "";
+        var coreTextIsbn = Clui.appContext.coreTextISBN ? Clui.appContext.coreTextISBN : "";
+
+        testLaunchedWindowExists = function () {
+            return true;
+        };
+
+        if (launchingInReviewMode) {
+            //Try to get take id via different means if it is empty.
+            if(takeId == null || takeId == '') {
+                takeId = dlAttempt.AttemptID;
+                if (takeId == null || takeId == '') {
+                    takeId = dlAttempt.TakeId;
+                }
+            }
+            //Page was rendered in review mode.  Use the take id passed in as a querystring parameter.
+            callback(takeId, launchingInReviewMode, isMasterSnapshot, cengageBrainCourseName, 'REVIEW', snapshotId, null, courseKey, mtSsoIsbn, coreTextIsbn);
+        }
+        else if ((activityType == 0 && !gradeable) || activityPlacement === 'INLINE') {
+            //This is a non-gradeable admin activity.   No attempt id required or recorded.
+            callback(null, launchingInReviewMode, isMasterSnapshot, cengageBrainCourseName, 'TAKE', snapshotId, dlAttempt.ContentId, courseKey, mtSsoIsbn, coreTextIsbn);
+        }
+        else {
+            log('New Attempt');
+            Clui.attempt.getAttemptId(function (result) {
+                try {
+                    var aId = result;
+                    dlAttempt.AttemptID = result;
+                    takeId = result;
+                    //log('Clui Attempt: ' + aId);
+                    //Notably, not all windows use all the values in this callback.  Verify changes against (Scorm, LTI and Launcher)
+                    callback(dlAttempt.AttemptID, launchingInReviewMode, isMasterSnapshot, cengageBrainCourseName, 'TAKE', snapshotId, null, courseKey, mtSsoIsbn, coreTextIsbn);
+                    //Store a comparison attempt id for callback
+                    storeCompare = takeId;
+                }
+                catch (e) {
+                    log('Error requesting attempt: ' + e);
+                }
+            });
+        }
+    }
+
+    function reportScore(message, data) {
+        log('Lab Activity Completed - Call MindTap');
+        logError(data, 'Recieved score recorded message from SCORM Client.  Message = ' + message);
+        if (data == "" || data == null) {
+            logError(data, 'AttemptID returned from SCORM was NULL or Empty.  Trying to retrieve from launch: dlAttempt.AttemptID = ' + dlAttempt.AttemptID + '. SCORM Message = ' + message);
+            return;
+        }
+
+        if (data != storeCompare) {
+            return;
+        }
+
+        if (message == 'Success') {
+            //App is being submitted for score. MindApp publish event for MindTap with callback function to launch in review mode
+            logError(data, 'Recieved Success message from SCORM client. Attempt to notify MT that attempt is complete.  AttemptID = ' + data);
+            Clui.attempt.submitAttempt(
+                data,
+                function () { populateReview(data, dlAttempt.ContentId); }
+            );
+        }
+        else {
+            logError(dlAttempt.AttemptID, 'Failure Message from Lab Activity - MindTap activity completed not called (' + data + ')', 'MindApp Client reportScore object');
+        }
+        
+        $dMsg.hide();
+        $dLaunch.hide();
+        dlJQ('#divRevBttn').html('<div>Your assignment is complete. If your review details do not automatically appear within a few seconds, click the button below.</div><input id="mtReview" class="bttnButton" type="button" title="Review" value="Review Assignment"/>');
+        $dRevBttn.show();
+
+    }
+
+    //dlJQ('#mtReview').live('click', function (e) {
+    //    $dRevBttn.hide();
+    //    populateReview(dlAttempt.AttemptID, dlAttempt.ContentId);
+    //});
+
+    dlJQ('#mtReview').live('click', function (e) {
+        $dRevBttn.hide();
+        
+        //refresh
+        dlJQ.ajax({
+            type: 'POST',
+            url: svcConfig + 'Services/getRefresh',
+            data: '{"SsoGuid":"' + dlSso.CluiGuid + '","Snapshot":"' + dlSso.Snapshot + '"}',
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                //were scores posted?
+                if (data) {
+                    logError(dlAttempt.AttemptID, 'Score did not post. Attempt to notify MT that attempt is complete via RefreshScore.  AttemptID = ' + dlAttempt.AttemptID);
+                    populateReview(dlAttempt.AttemptID, dlAttempt.ContentId);
+                } else {
+                    logError(dlAttempt.AttemptID, 'Failure Message from getRefresh - MindTap sync not completed. getRefresh Response = ' + data, 'MindApp Client getRefresh (manual Review Button Click)');
+                }
+            },
+            error: function (xhr, err, e) {
+                logError(dlAttempt.AttemptID, 'Failure calling getRefresh - MindTap sync not completed. getRefresh Error = ' + e, 'MindApp Client getRefresh failure (manual Review Button Click)');
+            }
+        });
+    });
+
+    dlJQ('#mtRelaunch').live('click', function (e) {
+        $dReLaunch.hide();
+        location.reload(true);
+    });
+
+    function logError(takeId, logData, source) {
+        dlJQ.ajax({
+            type: "POST",
+            url: svcConfig + 'Services/logMsg',
+            async: false,
+            data: '{"attemptId":"' + takeId + '", "snapshotId":' + dlAttempt.SnapshotId + ', "userId":"' + dlSso.CluiGuid + '", "logMessage":"' + logData + '", "logSource":"' + source + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data == true) {
+                    
+                } else {
+                    logError(dlAttempt.AttemptID, 'Failure Message attempting to log error.', 'MindApp Client logError object');
+                }
+            },
+            error: function (xhr, err, e) {
+                logError(dlAttempt.AttemptID, 'Failure calling logMsg. logMsg Error = ' + e, 'MindApp Client logError object (logMsg ajax call failed)');
+            }
+        });
+    }
+
+    function testWindowExists() {
+        return true;
+    }
+
+    
+</script><style>.tb_button {padding:1px;cursor:pointer;border-right: 1px solid #8b8b8b;border-left: 1px solid #FFF;border-bottom: 1px solid #fff;}.tb_button.hover {borer:2px outset #def; background-color: #f8f8f8 !important;}.ws_toolbar {z-index:100000} .ws_toolbar .ws_tb_btn {cursor:pointer;border:1px solid #555;padding:3px}   .tb_highlight{background-color:yellow} .tb_hide {visibility:hidden} .ws_toolbar img {padding:2px;margin:0px}</style></body></html>

@@ -1,0 +1,2 @@
+﻿//Establish a DLMT javascript namespace.
+var Dlmt = {};

@@ -1,0 +1,183 @@
+﻿Dlmt = Dlmt || {};
+
+Dlmt.LtiLaunchWindow = (function () {
+    var outcomeReturned = false;
+    var attemptReturned = false;  //Safe coding to protect against multiple callbacks on the launch window.
+    var serviceUrl = "";
+    var interval = null;
+    //Determine if we're running in a separate window, a frame or alone in the debugger.
+    //Notably window.parent will equal window.self if we're in a top level frame or not running frames (debug).
+    var runningInWindow = (window.opener);
+    var runningInFrame = (window.parent && (window.parent != window.self));
+    var parentWindowOrFrame = runningInWindow ? window.opener : (runningInFrame ? window.parent : null);
+    var reviewModeActive = false;
+    var attemptId = null;
+    var mindTapSnapshotId = 0;
+    var mindTapContentId = 0;
+    var mindTapCoreIsbn = "";
+    var mindTapSSOIsbn = "";
+
+    if ($("#is-ipad").val().toUpperCase() == 'TRUE') {
+        $(".scroll-wrapper").addClass('ipad-scrolling');
+        $("#tool-frame").addClass('ipad-frame');
+    }
+    else {
+        $(".scroll-wrapper").addClass('no-ipad-scrolling')
+    }
+
+    var closeHideWindow = function () {
+        if (parentWindowOrFrame) {
+            //Need to call parent method to hide if we are running in a frame.
+            if (runningInFrame) {
+                parentWindowOrFrame.hideModalFrame();
+            }
+            else {
+                window.close(true);
+            }
+        }
+    };
+
+    var setFrameSource = function (options) {
+        $("#tool-frame").attr('src', $('#launch-form-url').val() + (attemptId ? attemptId : "") + '&snapshotId=' + mindTapSnapshotId + '&contentId=' + mindTapContentId);
+    };
+
+    var checkForOutcome = function (options) {
+        options = options || { asynch: true, reportErrorToParentWindow: false, closeWindowOnReturn: false };
+        $.ajax({
+            type: "POST",
+            url: serviceUrl + 'CheckForScoreSynch',
+            async: options.asych,
+            data: '{"attemptId":"' + attemptId + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data == true) {
+                    outcomeReturned = true;
+                    if (parentWindowOrFrame) {
+                        parentWindowOrFrame.reportScore('Success', attemptId);
+                        if (options.closeWindowOnReturn) { closeHideWindow(); }
+                    }
+                }
+                else {
+                    if (parentWindowOrFrame && options.closeWindowOnReturn) { closeHideWindow(); }
+                }
+            },
+            error: function (xhr, err, e) {
+                if (options.reportErrorToParentWindow && parentWindowOrFrame) {
+                    //Only report an error communicating with DLMT service on frame return (so we don't show errors )
+                    parentWindowOrFrame.reportScore('Error', e);
+                    if (options.closeWindowOnReturn) { closeHideWindow(); }
+                }
+            }
+        });
+    };
+
+    var beginIntervalOutcomeCheck = function () {
+        var checkOutcome = function () {
+            if (!outcomeReturned) {
+                checkForOutcome({ asynch: true, reportErrorToParentWindow: false, closeWindowOnReturn: false });
+            }
+            else {
+                clearInterval(interval);
+            }
+        };
+        //Periodically check while Tool is running to see if the outcome has come through.
+        interval = setInterval(checkOutcome, 2000);
+    };
+
+    var onReGainFocus = function () {
+        //To handle iPad hibernating.  When we focus the browser again check for a score if we have an active attempt.
+        if (attemptId) {
+            clearInterval(interval);
+            beginIntervalOutcomeCheck();
+        }
+    };
+
+    var _init = function (options) {
+        serviceUrl = options.serviceUrl;
+
+        //send success details to opening window
+        if (parentWindowOrFrame) {
+            parentWindowOrFrame.launchSuccess(function (attempt, reviewMode, isMaster, courseTitle, launchMode, snapshotId, contentId, courseKey, ssoISBN, coreIsbn) {
+                attemptId = attempt;
+                reviewModeActive = reviewMode;
+                mindTapSnapshotId = snapshotId ? snapshotId : 0;
+                mindTapContentId = contentId ? contentId : 0;
+                mindTapCoreIsbn = coreIsbn ? coreIsbn : "";
+                mindTapSSOIsbn = ssoISBN ? ssoISBN : "";
+                if (attempt && !attemptReturned) {
+                    attemptReturned = true;
+                }
+                setFrameSource();
+
+                //Only start checking parent window after we have established the attempt so we can remove from new windows.
+                //Addresses an issue specific to window mode so not necessary when running in frames.
+                if (!runningInFrame) {
+                    beginCheckForParentWindow();
+                }
+                if (attemptId) {
+                    //Only check for a score if we have an attempt Id.
+                    beginIntervalOutcomeCheck();
+                }
+                //Restart check for outcome return on gaining window focus (for iPad hybernation)
+                $(window).focus(onReGainFocus);
+            });
+        }
+        else {
+            //Debug code for when not running out of mind tap
+            attemptId = "E80DF965-FDAA-423C-A063-92DB243AF38F";
+            $("#tool-frame").attr('src', $('#launch-form-url').val() + attemptId);
+        }
+    };
+
+    var _frameReturned = function () {
+        //Stop the periodic check for result on return.
+        if (interval) { clearInterval(interval); }
+        //Do one immediate check if we don't have an outcome yet and we have an attemptId
+        if (!outcomeReturned && attemptId) {
+            //Small pause to allow processing for Tools that score and return in rapid succession.
+            setTimeout(function () {
+                checkForOutcome({ asynch: false, reportErrorToParentWindow: true, closeWindowOnReturn: true });
+            }, 3000);
+        }
+        else {
+            //Close window.  We have recieved the grade and are finished.
+            closeHideWindow();
+        }
+    };
+
+    var _getReviewMode = function () {
+        return (reviewModeActive) ? "Y" : "N";
+    };
+
+    var _getMindTapISBN = function () {
+        return (mindTapSSOIsbn);
+    };
+
+    var _getCoreIsbn = function () {
+        return (mindTapCoreIsbn);
+    };
+
+    function beginCheckForParentWindow() {
+        var testParent = function () {
+            if (!parentWindowOrFrame || !parentWindowOrFrame.testLaunchedWindowExists || !parentWindowOrFrame.testLaunchedWindowExists()) {
+                window.close(true);
+            }
+
+            //subtle difference in scoping seems to make this necessary to catch full window closes.
+            if (!window.opener || !window.opener.testWindowExists || !window.opener.testWindowExists()) {
+                window.close(true);
+            }
+        };
+        //Periodically check while Tool is running to see if the outcome has come through.
+        interval = setInterval(testParent, 2000);
+    };
+
+    return {
+        init: _init,
+        frameReturned: _frameReturned,
+        getReviewMode: _getReviewMode,
+        getMindTapISBN: _getMindTapISBN,
+        getCoreIsbn: _getCoreIsbn
+    };
+})();

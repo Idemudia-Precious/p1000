@@ -1,0 +1,38 @@
+﻿body 
+{
+    margin: 0px;
+    padding: 0px;
+    background: #FFF url('../Images/ajax-loader.gif') no-repeat fixed center;
+    color: #fff;
+}
+
+#tool-frame {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.ipad-frame 
+{
+    min-width: 100%;
+    width: 100px;
+    position: static;
+}
+
+.scroll-wrapper {
+}
+
+.ipad-scrolling 
+{
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}

@@ -46,11 +46,3 @@ function typeWriter() {
 document.addEventListener('DOMContentLoaded', function(){
   typeWriter();
 });
-
-window.onload = function () {
-  var body = document.getElementsByClassName('body')[0];
-  var preloader = document.getElementsByClassName('preloader')[0];
-  setTimeout(function () {
-    preloader.style.display = 'none';
-  }, 1000);
-};

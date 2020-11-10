@@ -1,0 +1,30 @@
+﻿var activity = new Object();
+var dlAttempt = new Object();
+var context = new Object();
+var sso = new Object();
+var dlSso = new Object();
+
+function ordinal(x) {
+    return x + (~~(x / 10) % 10 == 1 ? 'th' : [, 'st', 'nd', 'rd'][x % 10] || 'th');
+}
+
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function numberCheck(n) {
+    var reg = new RegExp(/^\d+$/);
+
+    if (reg.test(n)) {
+        if(n <= 2147483647) {
+            return (reg.test(n));
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
+    //return (reg.test(n));
+}

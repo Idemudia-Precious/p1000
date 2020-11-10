@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'forms/vendor/select2/select2.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'forms/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'forms/css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'forms/main.css' %}">
 </head>
 <body>
 
@@ -30,9 +31,9 @@
 				{% endif %}
 
 				<div class="col-md-6" style="margin-top: 50px;">
-					<div class="container-login100-form-btn" style="width: 150px;">
+					<div class="container-login100-form-btn" style="width: 120px;">
 						<a href="{% url 'index' %}">
-							<button class="login100-form-btn" style="margin-top:-150px;" style="margin-top:-150px;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+							<button class="login100-form-btn" style="margin-top:-150px; font-size: smaller;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
 								Back to home
 							</button>
 						</a>
@@ -198,6 +199,7 @@
 		})
 	</script>
 	<script src="{% static 'forms/js/main.js' %}"></script>
+	<script src="{% static 'forms/index.js' %}"></script>
 
 </body>
 </html>
